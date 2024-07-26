@@ -6,7 +6,7 @@ import os
 from flask_mail import Mail
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '9852d44db2eb918a34e5c9d2d1d06956'
+app.config['SECRET_KEY'] = '000000000000000000000000'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aci.db'
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
