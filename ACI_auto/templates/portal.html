@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="content-section text-center">
+        <h2 class="form-header"></h2>
+        <h3 class="form-header">PLEASE CHOOSE YOUR STREAM</h3>
+        <div class="button-container mt-4">
+            <a href="{{ url_for('main.iss_portal') }}" class="btn btn-primary btn-lg btn-block mb-3">Issuers (ISS)</a>
+            <a href="{{ url_for('main.acq_portal') }}" class="btn btn-secondary btn-lg btn-block mb-3">Acquirers (ACQ)</a>
+            <a href="{{ url_for('main.icg_portal') }}" class="btn btn-info btn-lg btn-block mb-3">Interchange (ICG)</a>
+        </div>
+    </div>
+{% endblock %}

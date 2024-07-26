@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content-section">
+    <h1 class="form-header">  </h1>
+    <h2 class="form-header">Review Results</h2>
+
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Display results from the validation script -->
+    {% if validation_results %}
+        <div class="validation-results">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Review Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in validation_results %}
+                    <tr>
+                        <td>{{ result.component }}</td>
+                        <td>{{ result.reason }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h4 class="font-weight-bold">Total review comments: {{ total_comments }}</h4>
+            <p class="font-italic">Note that Parms and scripts are skipped from validations!</p>
+        </div>
+    {% endif %}
+
+    <a href="{{ url_for('main.portal') }}" class="btn btn-primary">Go Back Home</a>
+</div>
+{% endblock %}

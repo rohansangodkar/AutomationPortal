@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content-section">
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} flash-message" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <h2 class="form-header">                                    </h2>
+    <h3 class="form-header">CODE STANDARD CHECKER - {{ stream }}</h3>
+    <div class="form-container">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <!-- PR Field -->
+                <div class="form-group">
+                    <label>{{ form.pr.label }}</label>
+                    {% if form.pr.errors %}
+                        {{ form.pr(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.pr.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.pr(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <!-- Files Field -->
+                <div class="form-group">
+                    <label>{{ form.path.label }}</label>
+                    <input type="file" name="files" multiple class="form-control form-control-lg">
+                </div>
+                <!-- Submit Button -->
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock content %}
